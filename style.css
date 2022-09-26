@@ -18,7 +18,8 @@ body{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    gap: ;
+    row-gap: 5px;
+    column-gap: 5px;
 }
 .calculator-grid button{
     width: 120px;
@@ -26,7 +27,7 @@ body{
 
 }
 #zero{
-    width: 387px;
+    width: 370px;
 }
 .col-span{
     grid-column: span 3;

@@ -3,6 +3,7 @@ const display = document.querySelector('.display');
 const clear = document.getElementById('clear');
 const addBtn = document.getElementById('add');
 const result = document.getElementById('result');
+const multiplyBtn = document.getElementById('multiply');
 let displayValue = display.innerText;
 let sign = null;
 let firstN = null;
@@ -26,12 +27,23 @@ addBtn.addEventListener('click', () =>{
     sign = add;
     display.innerText += '+';
 })
+multiplyBtn.addEventListener('click', () =>{
+    firstN = Number(displayValue);
+    sign = multiply;
+    display.innerText += 'x';
+})
 
 result.addEventListener('click', () =>{
     secondN = Number(firstN);
     operator(firstN, secondN);
+    sign = null;
     
 })
+
+
+
+
+
 
 
 
@@ -54,6 +66,8 @@ function sustract (n1, n2){
 }
 
 function multiply (n1, n2){
+    total = n1 * n2
+    display.innerText = total;
     return n1 * n2;
 }
 
