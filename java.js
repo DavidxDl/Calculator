@@ -4,6 +4,8 @@ const clear = document.getElementById('clear');
 const addBtn = document.getElementById('add');
 const result = document.getElementById('result');
 const multiplyBtn = document.getElementById('multiply');
+const sustractBtn = document.getElementById('sustract');
+const divideBtn = document.getElementById('divide');
 let displayValue = display.innerText;
 let sign = null;
 let firstN = null;
@@ -29,6 +31,16 @@ addBtn.addEventListener('click', () =>{
     sign = add;
     display.innerText += '+';
 })
+sustractBtn.addEventListener('click', () =>{
+    firstN = Number(displayValue);
+    sign = sustract;
+    display.innerText += '-';
+})
+divideBtn.addEventListener('click', () =>{
+    firstN = Number(displayValue);
+    sign = divide;
+    display.innerText += '/';
+})
 multiplyBtn.addEventListener('click', () =>{
     firstN = Number(displayValue);
     sign = multiply;
@@ -36,7 +48,7 @@ multiplyBtn.addEventListener('click', () =>{
 })
 
 result.addEventListener('click', () =>{
-    let holder = display.innerHTML.split(/[+|,|x]/);
+    let holder = display.innerHTML.split(/[+|,|x|-|/]/);
     secondN = Number(holder[1]);
 
     operator(firstN, secondN);
@@ -70,6 +82,8 @@ function add(n1, n2){
 }
 
 function sustract (n1, n2){
+    total = n1 - n2;
+    display.innerText = total;
     return n1 - n2;
 }
 
@@ -80,6 +94,9 @@ function multiply (n1, n2){
 }
 
 function divide (n1, n2){
+    (n2 == 0)? total = 'cannot divide by 0':
+    total = n1 / n2;
+    display.innerText = total;
     return n1 / n2;
 }
 
