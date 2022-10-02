@@ -44,11 +44,11 @@ divideBtn.addEventListener('click', () =>{
 multiplyBtn.addEventListener('click', () =>{
     firstN = Number(displayValue);
     sign = multiply;
-    display.innerText += 'x';
+    display.innerText += '*';
 })
 
 result.addEventListener('click', () =>{
-    let holder = display.innerHTML.split(/[+|,|x|-|/]/);
+    let holder = display.innerHTML.split(/[+,*-/]/);
     secondN = Number(holder[1]);
 
     operator(firstN, secondN);
