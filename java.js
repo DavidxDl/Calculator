@@ -20,6 +20,8 @@ button.forEach(button => button.addEventListener('click', (e) => {
 clear.addEventListener('click', () => {
     display.innerText = 0;
     displayValue = 0;
+    firstN = 0;
+    secondN = 0;
 })
 
 addBtn.addEventListener('click', () =>{
