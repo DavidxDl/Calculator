@@ -36,9 +36,15 @@ multiplyBtn.addEventListener('click', () =>{
 })
 
 result.addEventListener('click', () =>{
-    secondN = Number(firstN);
+    let holder = display.innerHTML.split(/[+|,|x]/);
+    secondN = Number(holder[1]);
+
     operator(firstN, secondN);
     sign = null;
+    firstN = null;
+    secondN = null;
+    displayValue = display.innerHTML;
+    
     
 })
 
