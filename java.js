@@ -4,13 +4,12 @@ const clear = document.getElementById('clear');
 const addBtn = document.getElementById('add');
 const result = document.getElementById('result');
 const multiplyBtn = document.getElementById('multiply');
-const sustractBtn = document.getElementById('sustract');
+const substractBtn = document.getElementById('sustract');
 const divideBtn = document.getElementById('divide');
-let displayValue = display.innerText;
-let sign = null;
+let displayValue = ''
+let Operator = null;
 let firstN = null;
-let secondN = null;
-let total = null;
+let sign = null;
 
 
 button.forEach(button => button.addEventListener('click', (e) => {
@@ -21,67 +20,71 @@ button.forEach(button => button.addEventListener('click', (e) => {
 
 clear.addEventListener('click', () => {
     display.innerText = 0;
-    displayValue = 0;
-    firstN = 0;
-    secondN = 0;
+    displayValue = '';
+    firstN = null;
+    
+})
+result.addEventListener('click', () =>{
+    operatorOP()
 })
 
 addBtn.addEventListener('click', () =>{
-    firstN = Number(displayValue);
-    sign = add;
+    operatorOP();
+    displayValue += '+';
     display.innerText += '+';
+    sign = '+';
+
+    Operator = add;
+    
+    
 })
-sustractBtn.addEventListener('click', () =>{
-    firstN = Number(displayValue);
-    sign = sustract;
+substractBtn.addEventListener('click', () =>{
+    operatorOP();
+    Operator = substract;
+    sign = '-';
     display.innerText += '-';
+    displayValue += '-';
 })
 divideBtn.addEventListener('click', () =>{
-    firstN = Number(displayValue);
-    sign = divide;
+    operatorOP();
+    sign = '/';
+    Operator = divide;
+    displayValue += '/';
     display.innerText += '/';
 })
 multiplyBtn.addEventListener('click', () =>{
-    firstN = Number(displayValue);
-    sign = multiply;
+    operatorOP();
+    Operator = multiply;
+    sign = '*';
+    displayValue += '*';
     display.innerText += '*';
 })
 
-result.addEventListener('click', () =>{
-    let holder = display.innerHTML.split(/[+,*-/]/);
-    secondN = Number(holder[1]);
+function operatorOP(){
+    if (firstN === null){
+        firstN = Number(displayValue);}
+        else if (firstN !== null && displayValue == ''){
+            return;
 
-    operator(firstN, secondN);
-    sign = null;
-    firstN = null;
-    secondN = null;
-    displayValue = display.innerHTML;
-    
-    
-})
-
-
-
-
-
-
-
-
-
-
-function operator(n1, n2){
-    sign(n1, n2);
+        }
+        else{
+        const secondN = Number(displayValue.split(sign)[1]);
+        firstN = Operator(firstN, secondN);
+        }
+        
+        displayValue  = '';
+        sign = null;
 
 }
 
 
 function add(n1, n2){
-    total = n1 + n2;
+   const total = n1 + n2;
     display.innerText = total;
-    return n1 + n2;
+    return total;
 }
 
-function sustract (n1, n2){
+function substract (n1, n2){
     total = n1 - n2;
     display.innerText = total;
     return n1 - n2;
