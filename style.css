@@ -52,6 +52,7 @@ body{
     font-size: 40px;
     z-index: 100;
     background-color: green;
+    overflow: hidden;
 }
 #b1{
     grid-column: 1;
